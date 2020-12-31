@@ -46,9 +46,9 @@ export class ExamplePlatformAccessory {
       .on('set', this.setOn.bind(this))                // SET - bind to the `setOn` method below
       .on('get', this.getOn.bind(this));               // GET - bind to the `getOn` method below
 
-    // register handlers for the Brightness Characteristic
-    this.service.getCharacteristic(this.platform.Characteristic.Brightness)
-      .on('set', this.setBrightness.bind(this));       // SET - bind to the 'setBrightness` method below
+    // // register handlers for the Brightness Characteristic
+    // this.service.getCharacteristic(this.platform.Characteristic.Brightness)
+    //   .on('set', this.setBrightness.bind(this));       // SET - bind to the 'setBrightness` method below
 
 
     /**
@@ -62,12 +62,12 @@ export class ExamplePlatformAccessory {
      * can use the same sub type id.)
      */
 
-    // Example: add two "motion sensor" services to the accessory
-    const motionSensorOneService = this.accessory.getService('Motion Sensor One Name') ||
-      this.accessory.addService(this.platform.Service.MotionSensor, 'Motion Sensor One Name', 'YourUniqueIdentifier-1');
+    // // Example: add two "motion sensor" services to the accessory
+    // const motionSensorOneService = this.accessory.getService('Motion Sensor One Name') ||
+    //   this.accessory.addService(this.platform.Service.MotionSensor, 'Motion Sensor One Name', 'YourUniqueIdentifier-1');
 
-    const motionSensorTwoService = this.accessory.getService('Motion Sensor Two Name') ||
-      this.accessory.addService(this.platform.Service.MotionSensor, 'Motion Sensor Two Name', 'YourUniqueIdentifier-2');
+    // const motionSensorTwoService = this.accessory.getService('Motion Sensor Two Name') ||
+    //   this.accessory.addService(this.platform.Service.MotionSensor, 'Motion Sensor Two Name', 'YourUniqueIdentifier-2');
 
     /**
      * Updating characteristics values asynchronously.
@@ -78,18 +78,18 @@ export class ExamplePlatformAccessory {
      * the `updateCharacteristic` method.
      * 
      */
-    let motionDetected = false;
-    setInterval(() => {
-      // EXAMPLE - inverse the trigger
-      motionDetected = !motionDetected;
+    // let motionDetected = false;
+    // setInterval(() => {
+    //   // EXAMPLE - inverse the trigger
+    //   motionDetected = !motionDetected;
 
-      // push the new value to HomeKit
-      motionSensorOneService.updateCharacteristic(this.platform.Characteristic.MotionDetected, motionDetected);
-      motionSensorTwoService.updateCharacteristic(this.platform.Characteristic.MotionDetected, !motionDetected);
+    //   // push the new value to HomeKit
+    //   motionSensorOneService.updateCharacteristic(this.platform.Characteristic.MotionDetected, motionDetected);
+    //   motionSensorTwoService.updateCharacteristic(this.platform.Characteristic.MotionDetected, !motionDetected);
 
-      this.platform.log.debug('Triggering motionSensorOneService:', motionDetected);
-      this.platform.log.debug('Triggering motionSensorTwoService:', !motionDetected);
-    }, 10000);
+    //   this.platform.log.debug('Triggering motionSensorOneService:', motionDetected);
+    //   this.platform.log.debug('Triggering motionSensorTwoService:', !motionDetected);
+    // }, 10000);
   }
 
   /**
